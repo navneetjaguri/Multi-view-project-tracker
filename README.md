@@ -53,16 +53,6 @@ Desktop Lighthouse target is 85+.
 
 - Live URL: _add your Vercel/Netlify URL here_
 
-## Explanation (150-250 words)
-
-The hardest UI problem was building drag-and-drop behavior that feels native while staying fully custom and stable across both mouse and touch. The key challenge was separating visual drag feedback from layout state. Instead of physically moving the real card node through columns during drag, I keep the original card in-flow and fade it to behave as a layout-preserving placeholder. A separate floating “ghost” element follows pointer coordinates and handles motion feedback. This prevents reflow jitter and avoids list collapse in crowded columns.  
-
-Drop targeting is resolved by hit-testing the pointer with `elementFromPoint` and reading the nearest column marker. That made drop logic simple and reliable across nested card content. If the pointer is released outside a valid column, data is intentionally unchanged and the ghost animates out with a short snap-back transition, which communicates failure without abrupt popping.  
-
-With more time, I would refactor drag logic into a reusable hook (`useKanbanDrag`) and add keyboard accessibility for drag operations (grab/move/drop semantics and ARIA announcements), so interaction remains inclusive while keeping the same no-library architecture.
-# React + TypeScript + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
 
